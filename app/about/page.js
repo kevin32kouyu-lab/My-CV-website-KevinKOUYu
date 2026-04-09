@@ -24,17 +24,17 @@ export default function AboutPage() {
 
         <div className="mt-12 grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
-            <div className="glass-panel glow-card rounded-[2rem] border border-white/8 p-6 sm:p-8">
-              <div className="flex items-center gap-3 text-white">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
+            <div className="surface rounded-[2rem] p-6 sm:p-8">
+              <div className="flex items-center gap-3 text-slate-900">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-black/10 bg-white text-slate-900">
                   <Sparkles className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-lg font-semibold">背景简介</div>
-                  <div className="mt-1 text-sm text-zinc-400">工业现场经验 + 机器人学训练</div>
+                  <div className="title-font text-lg font-semibold">背景简介</div>
+                  <div className="mt-1 text-sm text-slate-500">工业现场经验 + 机器人学训练</div>
                 </div>
               </div>
-              <div className="mt-6 space-y-4 text-sm leading-7 text-zinc-300 sm:text-base">
+              <div className="mt-6 space-y-4 text-sm leading-7 text-slate-600 sm:text-base">
                 <p>
                   在 ABB 的跨国智能产线项目中，我长期处理高复杂度、多角色、多系统协同问题，对工程约束、交付节奏与现场闭环有深入理解。
                 </p>
@@ -57,13 +57,15 @@ export default function AboutPage() {
                   <MotionDiv
                     whileHover={{ y: -6 }}
                     transition={{ duration: 0.22 }}
-                    className="glass-panel glow-card h-full rounded-[1.75rem] border border-white/8 p-5"
+                    className="surface h-full rounded-[1.75rem] p-5"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-black/10 bg-white text-slate-900">
                         <Icon className="h-5 w-5" />
                       </div>
-                      <div className="text-base font-semibold text-white">{group.title}</div>
+                      <div className="title-font text-base font-semibold text-slate-900">
+                        {group.title}
+                      </div>
                     </div>
                     <div className="mt-5 flex flex-wrap gap-2">
                       {group.items.map((item) => (
@@ -101,10 +103,10 @@ export default function AboutPage() {
                 transition={{ duration: 0.22 }}
                 className="glass-panel glow-card h-full rounded-[1.75rem] border border-white/8 p-6"
               >
-                <div className="font-mono text-xs uppercase tracking-[0.24em] text-cyan-200">
+                <div className="mono-label text-slate-500">
                   {item.title}
                 </div>
-                <div className="mt-4 text-sm leading-7 text-zinc-300 sm:text-base">
+                <div className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
                   {item.description}
                 </div>
               </MotionDiv>
@@ -126,20 +128,24 @@ export default function AboutPage() {
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           {education.map((item, index) => (
             <Reveal key={item.school} delay={index * 0.08}>
-              <div className="glass-panel glow-card rounded-[2rem] border border-white/8 p-6 sm:p-8">
+              <div className="surface rounded-[2rem] p-6 sm:p-8">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-2xl font-semibold text-white">{item.school}</h3>
-                    <p className="mt-2 text-base text-cyan-100">{item.degree}</p>
+                    <h3 className="title-font text-2xl font-semibold text-slate-900">
+                      {item.school}
+                    </h3>
+                    <p className="mt-2 text-base text-slate-600">{item.degree}</p>
                   </div>
-                  <div className="rounded-full border border-white/8 bg-white/5 px-3 py-1 font-mono text-xs text-zinc-400">
+                  <div className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs text-slate-500">
                     0{index + 1}
                   </div>
                 </div>
-                <div className="mt-6 rounded-2xl border border-white/6 bg-black/20 px-4 py-3 text-sm text-zinc-300">
+                <div className="mt-6 rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-slate-600">
                   {item.period}
                 </div>
-                <p className="mt-5 text-sm leading-7 text-zinc-400 sm:text-base">{item.detail}</p>
+                <p className="mt-5 text-sm leading-7 text-slate-600 sm:text-base">
+                  {item.detail}
+                </p>
               </div>
             </Reveal>
           ))}
@@ -162,10 +168,10 @@ export default function AboutPage() {
               <MotionDiv
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.22 }}
-                className="glass-panel glow-card h-full rounded-[1.75rem] border border-white/8 p-6"
+                className="surface h-full rounded-[1.75rem] p-6"
               >
-                <div className="text-lg font-semibold text-white">{item.title}</div>
-                <div className="mt-4 text-sm leading-7 text-zinc-400 sm:text-base">
+                <div className="title-font text-lg font-semibold text-slate-900">{item.title}</div>
+                <div className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
                   {item.description}
                 </div>
               </MotionDiv>

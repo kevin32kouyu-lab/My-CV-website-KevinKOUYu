@@ -28,12 +28,12 @@ export default function ExperiencePage() {
               <MotionDiv
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.22 }}
-                className="glass-panel glow-card rounded-3xl border border-white/8 p-4"
+                className="surface rounded-3xl p-4"
               >
-                <div className="font-mono text-xs uppercase tracking-[0.24em] text-emerald-200">
+                <div className="mono-label text-slate-500">
                   {item.label}
                 </div>
-                <div className="mt-3 text-lg font-semibold text-white">{item.value}</div>
+                <div className="mt-3 text-lg font-semibold text-slate-900">{item.value}</div>
               </MotionDiv>
             </StaggerItem>
           ))}
@@ -45,12 +45,12 @@ export default function ExperiencePage() {
               <MotionDiv
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.22 }}
-                className="glass-panel glow-card h-full rounded-[1.75rem] border border-white/8 p-6"
+                className="surface h-full rounded-[1.75rem] p-6"
               >
-                <div className="font-mono text-xs uppercase tracking-[0.22em] text-cyan-200">
+                <div className="mono-label text-slate-500">
                   {item.title}
                 </div>
-                <div className="mt-4 text-sm leading-7 text-zinc-300 sm:text-base">
+                <div className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
                   {item.description}
                 </div>
               </MotionDiv>
@@ -59,38 +59,40 @@ export default function ExperiencePage() {
         </StaggerGroup>
 
         <div className="relative mt-12 pl-10 sm:pl-12">
-          <div className="timeline-line absolute left-4 top-2 bottom-2 w-px sm:left-5" />
+          <div className="absolute left-4 top-2 bottom-2 w-px bg-black/10 sm:left-5" />
           {experience.map((item, index) => (
             <Reveal key={item.company} delay={index * 0.08}>
               <div className="relative">
-                <div className="absolute left-[-2.35rem] top-6 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-400/25 bg-zinc-950 text-cyan-200 shadow-[0_0_24px_rgba(34,211,238,0.18)] sm:left-[-2.75rem]">
+                <div className="absolute left-[-2.35rem] top-6 flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-slate-900 sm:left-[-2.75rem]">
                   <Briefcase className="h-5 w-5" />
                 </div>
-                <div className="glass-panel glow-card rounded-[2rem] border border-white/8 p-6 sm:p-8">
+                <div className="surface rounded-[2rem] p-6 sm:p-8">
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div>
-                      <h3 className="text-2xl font-semibold text-white">{item.company}</h3>
-                      <p className="mt-2 text-lg text-cyan-100">{item.role}</p>
+                      <h3 className="title-font text-2xl font-semibold text-slate-900">
+                        {item.company}
+                      </h3>
+                      <p className="mt-2 text-lg text-slate-600">{item.role}</p>
                     </div>
-                    <div className="grid gap-2 text-sm text-zinc-400">
+                    <div className="grid gap-2 text-sm text-slate-500">
                       <div className="inline-flex items-center gap-2">
-                        <CalendarRange className="h-4 w-4 text-cyan-300" />
+                        <CalendarRange className="h-4 w-4 text-slate-500" />
                         {item.period}
                       </div>
                       <div className="inline-flex items-center gap-2">
-                        <MapPin className="h-4 w-4 text-emerald-300" />
+                        <MapPin className="h-4 w-4 text-slate-500" />
                         {item.location}
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 rounded-[1.5rem] border border-white/6 bg-black/20 p-4">
-                    <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-zinc-500">
+                  <div className="mt-6 rounded-[1.5rem] border border-black/10 bg-white p-4">
+                    <div className="mono-label text-slate-500">
                       Scope
                     </div>
                     <div className="mt-3 grid gap-3">
                       {item.scope.map((scopeItem) => (
-                        <div key={scopeItem} className="text-sm leading-7 text-zinc-300">
+                        <div key={scopeItem} className="text-sm leading-7 text-slate-600">
                           {scopeItem}
                         </div>
                       ))}
@@ -101,7 +103,7 @@ export default function ExperiencePage() {
                     {item.highlights.map((highlight) => (
                       <div
                         key={highlight}
-                        className="rounded-2xl border border-white/6 bg-black/20 px-4 py-4 text-sm leading-7 text-zinc-300"
+                        className="rounded-2xl border border-black/10 bg-white px-4 py-4 text-sm leading-7 text-slate-600"
                       >
                         {highlight}
                       </div>
@@ -112,7 +114,7 @@ export default function ExperiencePage() {
                     {item.keywords.map((keyword) => (
                       <span
                         key={keyword}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-2 font-mono text-xs text-zinc-300"
+                        className="rounded-full border border-black/10 bg-white px-3 py-2 text-xs text-slate-600"
                       >
                         {keyword}
                       </span>
