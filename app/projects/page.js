@@ -1,139 +1,153 @@
-import { Bot, FolderOpen } from "lucide-react";
-import { MotionArticle, MotionDiv } from "../../components/motion-elements";
+/**
+ * 这个文件定义项目页，重点把每个项目做成独立的系统模块而不是普通卡片。
+ * 相关模块：工业风标题、工业风面板、lib/site-data。
+ */
+
+import { FolderOpen, Wrench } from "lucide-react";
+import IndustrialPanel from "../../components/industrial/industrial-panel";
+import SectionHeading from "../../components/industrial/section-heading";
+import StatusIndicator from "../../components/industrial/status-indicator";
 import Reveal from "../../components/reveal";
-import SectionTitle from "../../components/section-title";
-import { StaggerGroup, StaggerItem } from "../../components/stagger-group";
-import { projectThemes, projects } from "../../lib/site-data";
+import { projectsPage } from "../../lib/site-data";
+import { cn } from "../../lib/cn";
 
 export const metadata = {
   title: "项目",
 };
 
+// 渲染项目页，让每个案例都像一块独立的设备模块被清楚呈现。
 export default function ProjectsPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">
-      <section className="py-10 sm:py-14">
+    <main className="page-shell pb-24">
+      <section className="py-8">
         <Reveal>
-          <SectionTitle
+          <SectionHeading
             icon={FolderOpen}
-            eyebrow="Projects"
-            title="我最想长期深挖的方向，是 Agent 与 Robotics 的交叉地带。"
-            description="这些项目覆盖智能体工作流、机器人控制系统与 IoT 软硬件联调，体现的是从算法、工程到系统落地的完整能力。"
+            eyebrow={projectsPage.eyebrow}
+            title={projectsPage.title}
+            description={projectsPage.description}
+            status={projectsPage.status}
           />
         </Reveal>
 
-        <Reveal delay={0.08}>
-          <div className="mt-10 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-sm text-slate-600">
-            <Bot className="h-4 w-4" />
-            重点关注 AI Agent、机器人控制与工程化交付
-          </div>
-        </Reveal>
+        <div className="mt-12 space-y-8">
+          {projectsPage.projects.map((project, index) => {
+            const mainOrder = index % 2 === 0 ? "lg:order-1" : "lg:order-2";
+            const sideOrder = index % 2 === 0 ? "lg:order-2" : "lg:order-1";
 
-        <StaggerGroup className="mt-12 grid gap-6 xl:grid-cols-3">
-          {projects.map((project, index) => {
-            const Icon = project.icon;
             return (
-              <StaggerItem key={project.title}>
-                <MotionArticle
-                  whileHover={{ y: -8 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="surface h-full rounded-[2rem] p-6 sm:p-7"
-                >
-                  <div className="hairline absolute inset-x-6 top-6" />
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-black/10 bg-white text-slate-900">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs text-slate-500">
-                      Project 0{index + 1}
-                    </span>
-                  </div>
-                  <h3 className="title-font mt-6 text-2xl font-semibold leading-tight text-slate-900">
-                    {project.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{project.subtitle}</p>
-                  <div className="mt-6 grid gap-3">
-                    <div className="rounded-2xl border border-black/10 bg-white px-4 py-4">
-                      <div className="mono-label text-slate-500">
-                        Role
+              <Reveal key={project.title} delay={index * 0.06}>
+                <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
+                  <IndustrialPanel
+                    className={cn(mainOrder, "px-6 py-6 sm:px-8 sm:py-8")}
+                    screws
+                    vents
+                    interactive
+                  >
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <div className="tech-label">{project.systemId}</div>
+                        <h2 className="title-font mt-4 text-3xl font-semibold leading-tight tracking-[-0.04em] text-[var(--foreground)] sm:text-4xl">
+                          {project.title}
+                        </h2>
+                        <p className="mt-4 max-w-[58ch] text-base leading-8 text-[var(--muted)]">
+                          {project.subtitle}
+                        </p>
                       </div>
-                      <div className="mt-2 text-sm leading-7 text-slate-600">{project.role}</div>
+                      <StatusIndicator state="active" label="Project Module" compact />
                     </div>
-                    <div className="rounded-2xl border border-black/10 bg-white px-4 py-4">
-                      <div className="mono-label text-slate-500">
-                        Impact
-                      </div>
-                      <div className="mt-2 text-sm leading-7 text-slate-700">{project.impact}</div>
-                    </div>
-                  </div>
-                  <div className="mt-6 space-y-3">
-                    {project.points.map((point) => (
-                      <div
-                        key={point}
-                        className="rounded-2xl border border-black/10 bg-white px-4 py-4 text-sm leading-7 text-slate-600"
-                      >
-                        {point}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-6">
-                    <div className="mono-label text-slate-500">
-                      Architecture
-                    </div>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {project.architecture.map((item) => (
-                        <span
-                          key={item}
-                          className="rounded-full border border-black/10 bg-white px-3 py-2 text-xs text-slate-600"
-                        >
-                          {item}
-                        </span>
+
+                    <div className="mt-8 grid gap-4">
+                      {project.points.map((point) => (
+                        <div key={point} className="data-slot rounded-[20px] px-5 py-5 text-sm leading-7 text-[var(--muted)] sm:text-base">
+                          {point}
+                        </div>
                       ))}
                     </div>
+
+                    <div className="mt-8">
+                      <div className="tech-label">Tags</div>
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        {project.tags.map((tag) => (
+                          <span key={tag} className="slot-chip">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </IndustrialPanel>
+
+                  <div className={cn(sideOrder, "grid gap-6")}>
+                    <IndustrialPanel as="section" variant="recessed" className="px-6 py-6 sm:px-7 sm:py-7">
+                      <div className="tech-label">Role / Impact</div>
+                      <div className="mt-6 grid gap-4">
+                        <div className="panel-shell rounded-[20px] px-5 py-5">
+                          <div className="tech-label">Role</div>
+                          <div className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">
+                            {project.role}
+                          </div>
+                        </div>
+                        <div className="panel-shell rounded-[20px] px-5 py-5">
+                          <div className="tech-label">Impact</div>
+                          <div className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">
+                            {project.impact}
+                          </div>
+                        </div>
+                      </div>
+                    </IndustrialPanel>
+
+                    <IndustrialPanel as="section" variant="dark" className="blueprint-grid px-6 py-6 sm:px-7 sm:py-7">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="tech-label text-[rgba(224,229,236,0.68)]">Architecture</div>
+                        <Wrench className="h-4 w-4 text-[var(--accent)]" strokeWidth={1.8} />
+                      </div>
+
+                      <div className="mt-6 grid gap-3">
+                        {project.architecture.map((item, itemIndex) => (
+                          <div key={item} className="flex items-center gap-3">
+                            <span className="screen-node min-w-[4.25rem]">{`0${itemIndex + 1}`}</span>
+                            <div className="connector-pipe flex-1" />
+                            <div className="rounded-[18px] border border-white/10 bg-white/6 px-4 py-3 text-sm text-[rgba(224,229,236,0.8)]">
+                              {item}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </IndustrialPanel>
                   </div>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-black/10 bg-white px-3 py-2 text-xs text-slate-600"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </MotionArticle>
-              </StaggerItem>
+                </div>
+              </Reveal>
             );
           })}
-        </StaggerGroup>
+        </div>
       </section>
 
-      <section className="py-6">
+      <section className="py-8">
         <Reveal>
-          <SectionTitle
-            icon={FolderOpen}
-            eyebrow="Themes"
-            title="比起单点功能，我更喜欢能牵动整条链路的问题。"
-            description="我对项目的兴趣，通常来自它是否同时涉及价值判断、系统设计、实现复杂度与真实世界反馈。"
-          />
-        </Reveal>
+          <IndustrialPanel className="px-6 py-6 sm:px-8 sm:py-8" variant="dark" screws>
+            <div className="tech-label text-[rgba(224,229,236,0.68)]">Support Layer</div>
+            <div className="mt-4 title-font text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">
+              比起单点功能，我更喜欢能牵动整条链路的问题。
+            </div>
+            <p className="mt-5 max-w-[62ch] text-base leading-8 text-[rgba(224,229,236,0.78)]">
+              我对项目的兴趣，通常来自它是否同时涉及价值判断、系统设计、实现复杂度与真实世界反馈。
+            </p>
 
-        <StaggerGroup className="mt-10 grid gap-4 lg:grid-cols-3">
-          {projectThemes.map((item) => (
-            <StaggerItem key={item.title}>
-              <MotionDiv
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.22 }}
-                className="surface h-full rounded-[1.75rem] p-6"
-              >
-                <div className="title-font text-lg font-semibold text-slate-900">{item.title}</div>
-                <div className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                  {item.description}
+            <div className="mt-8 grid gap-4 lg:grid-cols-3">
+              {projectsPage.themes.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-[22px] border border-white/10 bg-white/6 px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+                >
+                  <div className="title-font text-xl font-semibold text-white">{item.title}</div>
+                  <div className="mt-4 text-sm leading-7 text-[rgba(224,229,236,0.78)] sm:text-base">
+                    {item.description}
+                  </div>
                 </div>
-              </MotionDiv>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
+              ))}
+            </div>
+          </IndustrialPanel>
+        </Reveal>
       </section>
     </main>
   );

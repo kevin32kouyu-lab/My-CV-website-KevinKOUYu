@@ -1,159 +1,144 @@
-import Link from "next/link";
-import { ArrowRight, Mail } from "lucide-react";
-import { MotionDiv, MotionSpan } from "../components/motion-elements";
+/**
+ * 这个文件定义首页，重点突出个人品牌、设备主视觉和当前关注方向。
+ * 相关模块：SiteChrome、工业风基础组件、lib/site-data。
+ */
+
+import DeviceScreen from "../components/industrial/device-screen";
+import IndustrialPanel from "../components/industrial/industrial-panel";
+import MechanicalButton from "../components/industrial/mechanical-button";
+import StatusIndicator from "../components/industrial/status-indicator";
 import Reveal from "../components/reveal";
 import { StaggerGroup, StaggerItem } from "../components/stagger-group";
-import {
-  coreDirections,
-  homeFocusTracks,
-  homeHighlights,
-  homeNarratives,
-} from "../lib/site-data";
+import { contact, homePage, siteProfile } from "../lib/site-data";
 
+// 渲染首页，让访问者先记住“你是谁、做什么、为什么值得继续看”。
 export default function Page() {
   return (
-    <main className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">
-      <section className="grid min-h-[calc(100vh-7rem)] items-center gap-10 py-10 sm:py-14 lg:grid-cols-[1.08fr_0.92fr]">
-        <div>
+    <main className="page-shell pb-24">
+      <section className="grid gap-8 py-8 lg:min-h-[calc(100dvh-12rem)] lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="min-w-0">
           <Reveal>
-            <div className="mono-label text-slate-500">
-              AI · Robotics · Product Delivery
-            </div>
+            <StatusIndicator state={siteProfile.status.state} label={siteProfile.status.label} />
           </Reveal>
 
-          <Reveal delay={0.06}>
-            <h1 className="title-font mt-6 text-4xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-7xl">
-              寇宇 <span className="text-gradient">(Kevin)</span>
-              <span className="mt-4 block text-2xl font-medium text-slate-700 sm:text-3xl lg:text-4xl">
-                AI 产品经理 / Agent 开发者 / 机器人工程师
+          <Reveal delay={0.05}>
+            <div className="mt-6 tech-label">{homePage.hero.eyebrow}</div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <h1 className="title-font mt-6 text-5xl font-bold leading-[0.92] tracking-[-0.05em] text-[var(--foreground)] drop-shadow-[0_1px_0_#ffffff] sm:text-6xl lg:text-7xl">
+              {siteProfile.name}
+              <span className="mt-4 block text-2xl font-semibold leading-tight tracking-[-0.03em] text-[var(--muted)] sm:text-3xl lg:text-4xl">
+                {siteProfile.roleCn}
               </span>
             </h1>
           </Reveal>
 
-          <Reveal delay={0.12}>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-              致力于在 AI Agent 与具身智能场景中，把算法能力、工程系统与真实业务价值连接起来。
-              我关注的不只是把东西做出来，而是让它在真实环境里持续可用、持续产生价值。
+          <Reveal delay={0.15}>
+            <p className="mt-6 max-w-[62ch] text-base leading-8 text-[var(--muted)] sm:text-lg">
+              {siteProfile.tagline} {siteProfile.summary}
             </p>
           </Reveal>
 
-          <Reveal delay={0.18}>
+          <Reveal delay={0.2}>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <MotionDiv whileHover={{ y: -2 }} transition={{ duration: 0.18 }}>
-                <Link
-                  href="/projects"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-black"
-                >
-                  查看项目
-                  <ArrowRight className="h-4 w-4 transition duration-200 group-hover:translate-x-1" />
-                </Link>
-              </MotionDiv>
-              <MotionDiv whileHover={{ y: -2 }} transition={{ duration: 0.18 }}>
-                <a
-                  href="mailto:ky2014lucky@163.com"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-black/20 hover:text-slate-900"
-                >
-                  联系我
-                  <Mail className="h-4 w-4 transition duration-200 group-hover:-translate-y-0.5" />
-                </a>
-              </MotionDiv>
+              <MechanicalButton href="/projects" variant="primary" iconName="arrowRight">
+                查看项目
+              </MechanicalButton>
+              <MechanicalButton href={`mailto:${contact.email}`} variant="secondary" iconName="mail">
+                联系我
+              </MechanicalButton>
             </div>
           </Reveal>
 
-          <StaggerGroup className="mt-12 grid gap-4 sm:grid-cols-3">
-            {homeHighlights.map((item) => (
+          <StaggerGroup className="mt-10 grid gap-4 sm:grid-cols-3">
+            {homePage.metrics.map((item) => (
               <StaggerItem key={item.label}>
-                <MotionDiv
-                  whileHover={{ y: -6 }}
-                  transition={{ duration: 0.22 }}
-                  className="surface rounded-3xl p-4"
-                >
-                  <div className="mono-label text-slate-500">
-                    {item.label}
-                  </div>
-                  <div className="mt-3 text-lg font-semibold text-slate-900">{item.value}</div>
-                </MotionDiv>
+                <IndustrialPanel className="px-5 py-5" variant="floating" screws interactive>
+                  <div className="tech-label">{item.label}</div>
+                  <div className="metric-value mt-4">{item.value}</div>
+                  <div className="mt-3 text-sm leading-7 text-[var(--muted)]">{item.detail}</div>
+                </IndustrialPanel>
               </StaggerItem>
             ))}
           </StaggerGroup>
         </div>
 
-        <Reveal from="scale" delay={0.18}>
-          <div className="surface rounded-[2rem] p-6 sm:p-8">
-            <div className="mono-label text-slate-500">
-              System Snapshot
-            </div>
-            <div className="title-font mt-4 text-2xl font-semibold leading-tight text-slate-900">
-              从工业交付走向 Agent 与 Robotics 的系统构建者
-            </div>
-            <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-              我把工业现场打磨出来的问题意识、交付意识和系统意识，延伸到了 AI Agent
-              与具身智能领域，希望做出更接近真实世界的产品与系统。
-            </p>
-
-            <div className="mt-8 space-y-4">
-              {homeFocusTracks.map((item, index) => (
-                <MotionDiv
-                  key={item.label}
-                  initial={{ opacity: 0, x: 14 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ delay: 0.22 + index * 0.08, duration: 0.55 }}
-                  className="surface-soft rounded-[1.5rem] p-4"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="h-2.5 w-2.5 rounded-full bg-slate-900" />
-                    <div className="mono-label text-slate-500">
-                      {item.label}
-                    </div>
-                  </div>
-                  <div className="mt-3 text-sm leading-7 text-slate-600">{item.description}</div>
-                </MotionDiv>
-              ))}
-            </div>
-          </div>
+        <Reveal from="scale" delay={0.18} className="min-w-0">
+          <DeviceScreen
+            title={homePage.hero.device.title}
+            subtitle={homePage.hero.device.subtitle}
+            stats={homePage.metrics}
+            logs={homePage.hero.device.logs}
+          />
         </Reveal>
       </section>
 
-      <section className="space-y-6">
-        <StaggerGroup className="grid gap-4 lg:grid-cols-3">
-          {homeNarratives.map((item) => (
-            <StaggerItem key={item.title}>
-              <MotionDiv
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.22 }}
-                className="surface h-full rounded-[1.75rem] p-6"
-              >
-                <div className="mono-label text-slate-500">
-                  {item.title}
-                </div>
-                <div className="mt-4 text-base leading-7 text-slate-600">{item.description}</div>
-              </MotionDiv>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-
-        <Reveal delay={0.12}>
-          <section className="surface rounded-[2rem] p-6 sm:p-8">
-            <div className="mono-label text-slate-500">
-              Current Focus
+      <section className="grid gap-6 py-8 lg:grid-cols-[1.03fr_0.97fr]">
+        <Reveal className="min-w-0">
+          <IndustrialPanel className="h-full px-6 py-6 sm:px-8 sm:py-8" screws vents>
+            <div className="tech-label">{homePage.narratives[0].label}</div>
+            <div className="title-font mt-4 text-3xl font-semibold leading-tight tracking-[-0.04em] text-[var(--foreground)] sm:text-4xl">
+              {homePage.narratives[0].title}
             </div>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {coreDirections.map((item, index) => (
-                <MotionSpan
-                  key={item}
-                  initial={{ opacity: 0, y: 8 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ delay: index * 0.04, duration: 0.35 }}
-                  whileHover={{ y: -2 }}
-                  className="rounded-full border border-black/10 bg-white px-3 py-2 text-xs text-slate-600"
-                >
-                  {item}
-                </MotionSpan>
+            <p className="mt-5 max-w-[60ch] text-base leading-8 text-[var(--muted)]">
+              {homePage.narratives[0].description}
+            </p>
+
+            <div className="mt-8 grid gap-4">
+              {homePage.narratives.slice(1).map((item) => (
+                <div key={item.title} className="data-slot rounded-[20px] p-5 sm:p-6">
+                  <div className="tech-label">{item.label}</div>
+                  <div className="mt-3 title-font text-xl font-semibold text-[var(--foreground)]">
+                    {item.title}
+                  </div>
+                  <div className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">
+                    {item.description}
+                  </div>
+                </div>
               ))}
             </div>
-          </section>
+          </IndustrialPanel>
+        </Reveal>
+
+        <Reveal delay={0.08} className="min-w-0">
+          <IndustrialPanel className="h-full px-6 py-6 sm:px-8 sm:py-8" variant="dark" screws>
+            <div className="tech-label text-[rgba(224,229,236,0.7)]">Current Focus</div>
+            <div className="mt-4 title-font text-3xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-4xl">
+              现在重点做的，不是单点功能，而是一整条可运行链路。
+            </div>
+            <p className="mt-5 max-w-[58ch] text-base leading-8 text-[rgba(224,229,236,0.76)]">
+              从模型能力、控制链路到工程交付，我更关注系统是否真的能跑起来、稳下来、被团队接住。
+            </p>
+
+            <div className="mt-8 grid gap-4">
+              {homePage.focusTracks.map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-[22px] border border-white/10 bg-white/6 px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+                >
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="tech-label text-[rgba(224,229,236,0.68)]">{item.label}</div>
+                    <StatusIndicator state={item.state} label={item.state === "warning" ? "Priority Track" : "Live Track"} compact />
+                  </div>
+                  <div className="mt-4 text-sm leading-7 text-[rgba(224,229,236,0.8)] sm:text-base">
+                    {item.description}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <div className="tech-label text-[rgba(224,229,236,0.68)]">Control Tags</div>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {homePage.directions.map((item) => (
+                  <span key={item} className="slot-chip bg-white/8 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </IndustrialPanel>
         </Reveal>
       </section>
     </main>

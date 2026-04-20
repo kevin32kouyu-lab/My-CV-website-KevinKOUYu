@@ -1,3 +1,8 @@
+/**
+ * 这个文件负责站点的全局布局、字体和基础元信息。
+ * 相关模块：app 下所有页面、SiteChrome、globals.css。
+ */
+
 import "@fontsource/sora/400.css";
 import "@fontsource/sora/500.css";
 import "@fontsource/sora/600.css";
@@ -18,6 +23,7 @@ export const metadata = {
     "寇宇（Kevin）个人作品集，聚焦 AI Agent、具身智能、机器人控制与工程化交付。",
 };
 
+// 渲染站点根布局，让所有页面复用统一的导航与页脚。
 export default function RootLayout({ children }) {
   return (
     <html lang="zh-CN">
