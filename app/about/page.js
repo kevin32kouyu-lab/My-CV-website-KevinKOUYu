@@ -45,6 +45,13 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
+
+              <div className="mt-6 rounded-[20px] border border-[rgba(255,71,87,0.16)] bg-[rgba(255,71,87,0.05)] px-5 py-5">
+                <div className="tech-label">{aboutPage.status.label}</div>
+                <div className="mt-3 text-sm leading-7 text-[var(--foreground)] sm:text-base">
+                  当前求职城市优先级为深圳、上海、香港，优先关注 AI 产品、Agent 系统和机器人相关岗位。
+                </div>
+              </div>
             </IndustrialPanel>
           </Reveal>
 

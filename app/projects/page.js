@@ -5,6 +5,7 @@
 
 import { FolderOpen, Wrench } from "lucide-react";
 import IndustrialPanel from "../../components/industrial/industrial-panel";
+import MechanicalButton from "../../components/industrial/mechanical-button";
 import SectionHeading from "../../components/industrial/section-heading";
 import StatusIndicator from "../../components/industrial/status-indicator";
 import Reveal from "../../components/reveal";
@@ -75,6 +76,20 @@ export default function ProjectsPage() {
                         ))}
                       </div>
                     </div>
+
+                    {project.launchUrl ? (
+                      <div className="mt-8">
+                        <MechanicalButton
+                          href={project.launchUrl}
+                          variant="primary"
+                          iconName="arrowRight"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {project.launchLabel ?? "访问项目"}
+                        </MechanicalButton>
+                      </div>
+                    ) : null}
                   </IndustrialPanel>
 
                   <div className={cn(sideOrder, "grid gap-6")}>

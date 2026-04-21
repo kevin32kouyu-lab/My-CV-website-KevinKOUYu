@@ -51,6 +51,22 @@ export default function Page() {
             </div>
           </Reveal>
 
+          <Reveal delay={0.24}>
+            <IndustrialPanel className="mt-8 px-5 py-5 sm:px-6" variant="recessed">
+              <div className="tech-label">{siteProfile.jobPreference.title}</div>
+              <div className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">
+                {siteProfile.jobPreference.description}
+              </div>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {siteProfile.jobPreference.priorities.map((item, index) => (
+                  <span key={item} className="slot-chip slot-chip-muted">
+                    {`${index + 1}. ${item}`}
+                  </span>
+                ))}
+              </div>
+            </IndustrialPanel>
+          </Reveal>
+
           <StaggerGroup className="mt-10 grid gap-4 sm:grid-cols-3">
             {homePage.metrics.map((item) => (
               <StaggerItem key={item.label}>
