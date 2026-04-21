@@ -3,7 +3,7 @@
  * 相关模块：工业风标题、工业风面板、lib/site-data。
  */
 
-import { FolderOpen, Wrench } from "lucide-react";
+import { FolderOpen, Wrench } from "@phosphor-icons/react/ssr";
 import IndustrialPanel from "../../components/industrial/industrial-panel";
 import MechanicalButton from "../../components/industrial/mechanical-button";
 import SectionHeading from "../../components/industrial/section-heading";
@@ -54,6 +54,9 @@ export default function ProjectsPage() {
                         <p className="mt-4 max-w-[58ch] text-base leading-8 text-[var(--muted)]">
                           {project.subtitle}
                         </p>
+                        <div className="mt-4 inline-flex rounded-full bg-[rgba(233,79,95,0.08)] px-4 py-2 text-sm font-semibold text-[var(--foreground)]">
+                          {project.period}
+                        </div>
                       </div>
                       <StatusIndicator state="active" label="Project Module" compact />
                     </div>
@@ -114,13 +117,13 @@ export default function ProjectsPage() {
                     <IndustrialPanel as="section" variant="dark" className="blueprint-grid px-6 py-6 sm:px-7 sm:py-7">
                       <div className="flex items-center justify-between gap-3">
                         <div className="tech-label text-[rgba(224,229,236,0.68)]">Architecture</div>
-                        <Wrench className="h-4 w-4 text-[var(--accent)]" strokeWidth={1.8} />
+                        <Wrench className="h-4 w-4 text-[var(--accent)]" weight="bold" />
                       </div>
 
                       <div className="mt-6 grid gap-3">
                         {project.architecture.map((item, itemIndex) => (
                           <div key={item} className="flex items-center gap-3">
-                            <span className="screen-node min-w-[4.25rem]">{`0${itemIndex + 1}`}</span>
+                            <span className="system-node min-w-[4.25rem]">{`0${itemIndex + 1}`}</span>
                             <div className="connector-pipe flex-1" />
                             <div className="rounded-[18px] border border-white/10 bg-white/6 px-4 py-3 text-sm text-[rgba(224,229,236,0.8)]">
                               {item}

@@ -1,62 +1,40 @@
 /**
- * 这个文件定义首页，重点突出个人品牌、设备主视觉和当前关注方向。
+ * 这个文件定义首页，只展示公开简历中的个人基本资料和个人介绍。
  * 相关模块：SiteChrome、工业风基础组件、lib/site-data。
  */
 
-import DeviceScreen from "../components/industrial/device-screen";
 import IndustrialPanel from "../components/industrial/industrial-panel";
 import MechanicalButton from "../components/industrial/mechanical-button";
 import StatusIndicator from "../components/industrial/status-indicator";
 import Reveal from "../components/reveal";
-import { StaggerGroup, StaggerItem } from "../components/stagger-group";
-import { contact, homePage, siteProfile } from "../lib/site-data";
+import { contact, siteProfile } from "../lib/site-data";
 
-// 渲染首页，让访问者先记住“你是谁、做什么、为什么值得继续看”。
+// 渲染简洁首页，让招聘方快速获得基本资料和个人定位。
 export default function Page() {
   return (
-    <main className="page-shell pb-24">
-      <section className="grid gap-8 py-8 lg:min-h-[calc(100dvh-12rem)] lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div className="min-w-0">
-          <Reveal>
+    <main className="page-shell pb-20">
+      <section className="grid gap-6 py-8 md:py-10 lg:min-h-[calc(100dvh-12rem)] lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+        <Reveal className="min-w-0">
+          <div className="max-w-[68ch]">
             <StatusIndicator state={siteProfile.status.state} label={siteProfile.status.label} />
-          </Reveal>
 
-          <Reveal delay={0.05}>
-            <div className="mt-6 tech-label">{homePage.hero.eyebrow}</div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <h1 className="title-font mt-6 text-5xl font-bold leading-[0.92] tracking-[-0.05em] text-[var(--foreground)] drop-shadow-[0_1px_0_#ffffff] sm:text-6xl lg:text-7xl">
+            <div className="mt-8 tech-label">Resume Profile / Public Version</div>
+            <h1 className="title-font mt-5 text-4xl font-bold leading-[1.02] tracking-[-0.045em] text-[var(--foreground)] sm:text-5xl lg:text-6xl">
               {siteProfile.name}
-              <span className="mt-4 block text-2xl font-semibold leading-tight tracking-[-0.03em] text-[var(--muted)] sm:text-3xl lg:text-4xl">
-                {siteProfile.roleCn}
-              </span>
             </h1>
-          </Reveal>
-
-          <Reveal delay={0.15}>
-            <p className="mt-6 max-w-[62ch] text-base leading-8 text-[var(--muted)] sm:text-lg">
-              {siteProfile.tagline} {siteProfile.summary}
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.2}>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <MechanicalButton href="/projects" variant="primary" iconName="arrowRight">
-                查看项目
-              </MechanicalButton>
-              <MechanicalButton href={`mailto:${contact.email}`} variant="secondary" iconName="mail">
-                联系我
-              </MechanicalButton>
+            <div className="mt-5 title-font text-xl font-semibold leading-snug tracking-[-0.025em] text-[var(--muted)] sm:text-2xl">
+              {siteProfile.roleCn}
             </div>
-          </Reveal>
 
-          <Reveal delay={0.24}>
-            <IndustrialPanel className="mt-8 px-5 py-5 sm:px-6" variant="recessed">
+            <p className="mt-7 max-w-[62ch] text-base leading-8 text-[var(--muted)] sm:text-lg">
+              {siteProfile.summary}
+            </p>
+
+            <IndustrialPanel className="mt-8 px-5 py-5 sm:px-6 sm:py-6" variant="recessed">
               <div className="tech-label">{siteProfile.jobPreference.title}</div>
-              <div className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">
+              <p className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">
                 {siteProfile.jobPreference.description}
-              </div>
+              </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 {siteProfile.jobPreference.priorities.map((item, index) => (
                   <span key={item} className="slot-chip slot-chip-muted">
@@ -65,94 +43,55 @@ export default function Page() {
                 ))}
               </div>
             </IndustrialPanel>
-          </Reveal>
 
-          <StaggerGroup className="mt-10 grid gap-4 sm:grid-cols-3">
-            {homePage.metrics.map((item) => (
-              <StaggerItem key={item.label}>
-                <IndustrialPanel className="px-5 py-5" variant="floating" screws interactive>
-                  <div className="tech-label">{item.label}</div>
-                  <div className="metric-value mt-4">{item.value}</div>
-                  <div className="mt-3 text-sm leading-7 text-[var(--muted)]">{item.detail}</div>
-                </IndustrialPanel>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-        </div>
-
-        <Reveal from="scale" delay={0.18} className="min-w-0">
-          <DeviceScreen
-            title={homePage.hero.device.title}
-            subtitle={homePage.hero.device.subtitle}
-            stats={homePage.metrics}
-            logs={homePage.hero.device.logs}
-          />
-        </Reveal>
-      </section>
-
-      <section className="grid gap-6 py-8 lg:grid-cols-[1.03fr_0.97fr]">
-        <Reveal className="min-w-0">
-          <IndustrialPanel className="h-full px-6 py-6 sm:px-8 sm:py-8" screws vents>
-            <div className="tech-label">{homePage.narratives[0].label}</div>
-            <div className="title-font mt-4 text-3xl font-semibold leading-tight tracking-[-0.04em] text-[var(--foreground)] sm:text-4xl">
-              {homePage.narratives[0].title}
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <MechanicalButton href={`mailto:${contact.email}`} variant="primary" iconName="mail">
+                联系我
+              </MechanicalButton>
+              <MechanicalButton href="/projects" variant="secondary" iconName="arrowRight">
+                查看项目
+              </MechanicalButton>
             </div>
-            <p className="mt-5 max-w-[60ch] text-base leading-8 text-[var(--muted)]">
-              {homePage.narratives[0].description}
-            </p>
-
-            <div className="mt-8 grid gap-4">
-              {homePage.narratives.slice(1).map((item) => (
-                <div key={item.title} className="data-slot rounded-[20px] p-5 sm:p-6">
-                  <div className="tech-label">{item.label}</div>
-                  <div className="mt-3 title-font text-xl font-semibold text-[var(--foreground)]">
-                    {item.title}
-                  </div>
-                  <div className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">
-                    {item.description}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </IndustrialPanel>
+          </div>
         </Reveal>
 
-        <Reveal delay={0.08} className="min-w-0">
-          <IndustrialPanel className="h-full px-6 py-6 sm:px-8 sm:py-8" variant="dark" screws>
-            <div className="tech-label text-[rgba(224,229,236,0.7)]">Current Focus</div>
-            <div className="mt-4 title-font text-3xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-4xl">
-              现在重点做的，不是单点功能，而是一整条可运行链路。
-            </div>
-            <p className="mt-5 max-w-[58ch] text-base leading-8 text-[rgba(224,229,236,0.76)]">
-              从模型能力、控制链路到工程交付，我更关注系统是否真的能跑起来、稳下来、被团队接住。
-            </p>
-
-            <div className="mt-8 grid gap-4">
-              {homePage.focusTracks.map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-[22px] border border-white/10 bg-white/6 px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
-                >
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="tech-label text-[rgba(224,229,236,0.68)]">{item.label}</div>
-                    <StatusIndicator state={item.state} label={item.state === "warning" ? "Priority Track" : "Live Track"} compact />
-                  </div>
-                  <div className="mt-4 text-sm leading-7 text-[rgba(224,229,236,0.8)] sm:text-base">
-                    {item.description}
-                  </div>
+        <Reveal from="right" delay={0.08} className="min-w-0">
+          <IndustrialPanel className="px-5 py-5 sm:px-7 sm:py-7" screws vents>
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <div className="tech-label">Basic Profile</div>
+                <div className="title-font mt-2 text-2xl font-semibold tracking-[-0.035em] text-[var(--foreground)] sm:text-3xl">
+                  个人基本资料
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-8">
-              <div className="tech-label text-[rgba(224,229,236,0.68)]">Control Tags</div>
-              <div className="mt-4 flex flex-wrap gap-3">
-                {homePage.directions.map((item) => (
-                  <span key={item} className="slot-chip bg-white/8 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-                    {item}
-                  </span>
-                ))}
               </div>
+              <StatusIndicator state="online" compact />
+            </div>
+
+            <div className="mt-7 divide-y divide-[rgba(74,85,104,0.14)]">
+              {siteProfile.basicProfile.map((item) => {
+                const content = (
+                  <>
+                    <span className="tech-label shrink-0 text-[0.7rem]">{item.label}</span>
+                    <span className="text-right text-sm font-semibold leading-7 text-[var(--foreground)] sm:text-base">
+                      {item.value}
+                    </span>
+                  </>
+                );
+
+                return item.href ? (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="grid grid-cols-[6.5rem_1fr] items-center gap-4 py-4 transition-colors hover:text-[var(--accent)]"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <div key={item.label} className="grid grid-cols-[6.5rem_1fr] items-center gap-4 py-4">
+                    {content}
+                  </div>
+                );
+              })}
             </div>
           </IndustrialPanel>
         </Reveal>

@@ -3,14 +3,14 @@
  * 相关模块：app 下所有页面、SiteChrome、globals.css。
  */
 
-import "@fontsource/sora/400.css";
-import "@fontsource/sora/500.css";
-import "@fontsource/sora/600.css";
-import "@fontsource/sora/700.css";
-import "@fontsource/manrope/400.css";
-import "@fontsource/manrope/500.css";
-import "@fontsource/manrope/600.css";
-import "@fontsource/manrope/700.css";
+import "@fontsource/geist/400.css";
+import "@fontsource/geist/500.css";
+import "@fontsource/geist/600.css";
+import "@fontsource/geist/700.css";
+import "@fontsource/geist/800.css";
+import "@fontsource/geist-mono/400.css";
+import "@fontsource/geist-mono/500.css";
+import "@fontsource/geist-mono/600.css";
 import "./globals.css";
 import SiteChrome from "../components/site-chrome";
 

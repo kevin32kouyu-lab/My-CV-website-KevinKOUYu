@@ -3,7 +3,7 @@
  * 相关模块：工业风标题、工业风面板、lib/site-data。
  */
 
-import { Briefcase, CalendarRange, MapPin } from "lucide-react";
+import { Briefcase, CalendarDots, MapPin } from "@phosphor-icons/react/ssr";
 import IndustrialPanel from "../../components/industrial/industrial-panel";
 import SectionHeading from "../../components/industrial/section-heading";
 import Reveal from "../../components/reveal";
@@ -62,7 +62,7 @@ export default function ExperiencePage() {
                   >
                     <div className="flex items-center gap-3">
                       <span className="icon-housing h-12 w-12 bg-white/8 text-[var(--accent)] shadow-none">
-                        <Icon className="h-5 w-5" strokeWidth={1.8} />
+                        <Icon className="h-5 w-5" weight="bold" />
                       </span>
                       <div className="title-font text-xl font-semibold text-white">{item.title}</div>
                     </div>
@@ -101,11 +101,11 @@ export default function ExperiencePage() {
 
                       <div className="grid gap-2 text-sm text-[var(--muted)]">
                         <div className="inline-flex items-center gap-2">
-                          <CalendarRange className="h-4 w-4 text-[var(--accent)]" strokeWidth={1.8} />
+                          <CalendarDots className="h-4 w-4 text-[var(--accent)]" weight="bold" />
                           {item.period}
                         </div>
                         <div className="inline-flex items-center gap-2">
-                          <MapPin className="h-4 w-4 text-[var(--accent)]" strokeWidth={1.8} />
+                          <MapPin className="h-4 w-4 text-[var(--accent)]" weight="bold" />
                           {item.location}
                         </div>
                       </div>
@@ -133,6 +133,19 @@ export default function ExperiencePage() {
                       ))}
                     </div>
 
+                    {item.projectList ? (
+                      <div className="mt-6 data-slot rounded-[20px] px-5 py-5">
+                        <div className="tech-label">Project Records</div>
+                        <div className="mt-4 grid gap-3">
+                          {item.projectList.map((project) => (
+                            <div key={project} className="text-sm leading-7 text-[var(--muted)] sm:text-base">
+                              {project}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
+
                     <div className="mt-6 flex flex-wrap gap-3">
                       {item.keywords.map((keyword) => (
                         <span key={keyword} className="slot-chip">
@@ -141,7 +154,7 @@ export default function ExperiencePage() {
                       ))}
                     </div>
 
-                    <div className="mt-6 rounded-[20px] border border-[rgba(255,71,87,0.18)] bg-[rgba(255,71,87,0.06)] px-5 py-5 text-sm leading-7 text-[var(--foreground)] sm:text-base">
+                    <div className="mt-6 rounded-[20px] border border-[rgba(233,79,95,0.18)] bg-[rgba(233,79,95,0.06)] px-5 py-5 text-sm leading-7 text-[var(--foreground)] sm:text-base">
                       {item.transition}
                     </div>
                   </div>

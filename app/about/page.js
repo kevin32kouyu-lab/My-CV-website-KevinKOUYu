@@ -3,7 +3,7 @@
  * 相关模块：工业风标题、工业风面板、lib/site-data。
  */
 
-import { GraduationCap, Sparkles, UserRound } from "lucide-react";
+import { GraduationCap, Sparkle, UserCircle } from "@phosphor-icons/react/ssr";
 import IndustrialPanel from "../../components/industrial/industrial-panel";
 import SectionHeading from "../../components/industrial/section-heading";
 import Reveal from "../../components/reveal";
@@ -22,7 +22,7 @@ export default function AboutPage() {
       <section className="py-8">
         <Reveal>
           <SectionHeading
-            icon={UserRound}
+            icon={UserCircle}
             eyebrow={aboutPage.eyebrow}
             title={aboutPage.title}
             description={aboutPage.description}
@@ -46,10 +46,10 @@ export default function AboutPage() {
                 ))}
               </div>
 
-              <div className="mt-6 rounded-[20px] border border-[rgba(255,71,87,0.16)] bg-[rgba(255,71,87,0.05)] px-5 py-5">
+              <div className="mt-6 rounded-[20px] border border-[rgba(233,79,95,0.16)] bg-[rgba(233,79,95,0.05)] px-5 py-5">
                 <div className="tech-label">{aboutPage.status.label}</div>
                 <div className="mt-3 text-sm leading-7 text-[var(--foreground)] sm:text-base">
-                  当前求职城市优先级为深圳、上海、香港，优先关注 AI 产品、Agent 系统和机器人相关岗位。
+                  当前求职城市优先级为深圳、上海、香港，优先关注 AI 产品、Agent 系统和机器人相关岗位，随时到岗。
                 </div>
               </div>
             </IndustrialPanel>
@@ -69,7 +69,7 @@ export default function AboutPage() {
                   >
                     <div className="flex items-center gap-3">
                       <span className={cn("icon-housing h-12 w-12", index === 2 ? "bg-white/8 text-white shadow-none" : "text-[var(--accent)]")}>
-                        <Icon className="h-5 w-5" strokeWidth={1.8} />
+                        <Icon className="h-5 w-5" weight="bold" />
                       </span>
                       <div>
                         <div className={cn("tech-label", index === 2 ? "text-[rgba(224,229,236,0.7)]" : "")}>Skill Module</div>
@@ -105,7 +105,7 @@ export default function AboutPage() {
           <IndustrialPanel className="px-6 py-6 sm:px-8 sm:py-8" screws>
             <div className="flex items-center gap-3">
               <span className="icon-housing h-12 w-12 text-[var(--accent)]">
-                <Sparkles className="h-5 w-5" strokeWidth={1.8} />
+                <Sparkle className="h-5 w-5" weight="bold" />
               </span>
               <div>
                 <div className="tech-label">{aboutPage.approach.label}</div>
@@ -144,7 +144,7 @@ export default function AboutPage() {
           <IndustrialPanel className="h-full px-6 py-6 sm:px-8 sm:py-8" screws>
             <div className="flex items-center gap-3">
               <span className="icon-housing h-12 w-12 text-[var(--accent)]">
-                <GraduationCap className="h-5 w-5" strokeWidth={1.8} />
+                <GraduationCap className="h-5 w-5" weight="bold" />
               </span>
               <div>
                 <div className="tech-label">Education Rack</div>
@@ -170,6 +170,15 @@ export default function AboutPage() {
                   <div className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">
                     {item.detail}
                   </div>
+                  {item.courses ? (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {item.courses.map((course) => (
+                        <span key={course} className="slot-chip slot-chip-muted">
+                          {course}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -198,6 +207,17 @@ export default function AboutPage() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8 rounded-[22px] border border-white/10 bg-white/6 px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+              <div className="tech-label text-[rgba(224,229,236,0.68)]">Honors</div>
+              <div className="mt-4 grid gap-3">
+                {aboutPage.certifications.map((item) => (
+                  <div key={item} className="text-sm leading-7 text-[rgba(224,229,236,0.78)] sm:text-base">
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
           </IndustrialPanel>
         </Reveal>

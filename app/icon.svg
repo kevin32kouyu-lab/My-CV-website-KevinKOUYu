@@ -1,0 +1,9 @@
+<!-- 这个文件定义浏览器标签页图标，和全站工业控制台视觉保持一致。 -->
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="16" fill="#e8edf3" />
+  <rect x="10" y="10" width="44" height="44" rx="12" fill="#f4f6f8" stroke="#babecc" stroke-width="2" />
+  <circle cx="18" cy="18" r="3" fill="#a3b1c6" />
+  <circle cx="46" cy="18" r="3" fill="#ffffff" stroke="#a3b1c6" stroke-width="1" />
+  <path d="M22 39V25h5v5.4L36 25h6.5L32 31.5 43 39h-7l-9-6.2V39h-5Z" fill="#2d3436" />
+  <circle cx="46" cy="46" r="5" fill="#e94f5f" />
+</svg>

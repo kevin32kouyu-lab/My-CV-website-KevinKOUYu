@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Radio, X } from "lucide-react";
+import { List, Radio, X } from "@phosphor-icons/react";
 import IndustrialPanel from "./industrial/industrial-panel";
 import MechanicalButton from "./industrial/mechanical-button";
 import StatusIndicator from "./industrial/status-indicator";
@@ -62,7 +62,7 @@ export default function SiteChrome({ children }) {
             <Link href="/" className="min-w-0">
               <div className="flex items-center gap-3">
                 <span className="icon-housing h-12 w-12 shrink-0 text-[var(--accent)]">
-                  <Radio className="h-5 w-5" strokeWidth={1.8} />
+                  <Radio className="h-5 w-5" weight="bold" />
                 </span>
                 <div className="min-w-0">
                   <div className="truncate title-font text-lg font-semibold text-[var(--foreground)] sm:text-xl">
@@ -88,9 +88,9 @@ export default function SiteChrome({ children }) {
                 onClick={() => setMenuOpen((open) => !open)}
               >
                 {menuOpen ? (
-                  <X className="h-4 w-4" strokeWidth={1.8} />
+                  <X className="h-4 w-4" weight="bold" />
                 ) : (
-                  <Menu className="h-4 w-4" strokeWidth={1.8} />
+                  <List className="h-4 w-4" weight="bold" />
                 )}
               </MechanicalButton>
             </div>

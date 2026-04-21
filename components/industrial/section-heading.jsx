@@ -24,12 +24,12 @@ export default function SectionHeading({
         <div className="flex items-center gap-3">
           {Icon ? (
             <span className="icon-housing h-12 w-12 text-[var(--accent)]">
-              <Icon className="h-5 w-5" strokeWidth={1.8} />
+              <Icon className="h-5 w-5" weight="bold" />
             </span>
           ) : null}
           <span className="tech-label">{eyebrow}</span>
         </div>
-        <HeadingTag className="title-font mt-6 text-4xl font-bold tracking-[-0.04em] text-[var(--foreground)] sm:text-5xl lg:text-6xl">
+        <HeadingTag className="title-font mt-6 text-3xl font-bold leading-tight tracking-[-0.04em] text-[var(--foreground)] sm:text-4xl lg:text-5xl">
           {title}
         </HeadingTag>
         <p className="mt-5 max-w-[62ch] text-base leading-8 text-[var(--muted)] sm:text-lg">

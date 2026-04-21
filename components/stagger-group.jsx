@@ -2,7 +2,7 @@
 
 /**
  * 这个文件提供统一的错峰出现动效，适合成组面板和列表模块。
- * 相关模块：首页指标区、项目模块、关于页能力区、经历页指标区。
+ * 相关模块：项目模块、关于页能力区、经历页指标区。
  */
 
 import { motion } from "framer-motion";
@@ -17,14 +17,14 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.98 },
+  hidden: { opacity: 0, y: 12, scale: 0.99 },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.55,
-      ease: [0.175, 0.885, 0.32, 1.275],
+      duration: 0.42,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };

@@ -7,12 +7,12 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, Phone } from "lucide-react";
+import { ArrowRight, EnvelopeSimple, Phone } from "@phosphor-icons/react";
 import { cn } from "../../lib/cn";
 
 const variantClasses = {
   primary:
-    "border border-white/20 bg-[var(--accent)] text-white shadow-[4px_4px_8px_rgba(166,50,60,0.35),-4px_-4px_8px_rgba(255,121,132,0.42)] hover:brightness-110 active:shadow-[inset_6px_6px_12px_rgba(166,50,60,0.4),inset_-6px_-6px_12px_rgba(255,121,132,0.22)]",
+    "border border-white/20 bg-[var(--accent)] text-white shadow-[3px_3px_10px_rgba(166,50,60,0.24),-3px_-3px_10px_rgba(255,255,255,0.35)] hover:brightness-105 active:shadow-[inset_4px_4px_10px_rgba(166,50,60,0.32),inset_-4px_-4px_10px_rgba(255,121,132,0.18)]",
   secondary:
     "border border-white/70 bg-[linear-gradient(145deg,var(--panel),#e6ebf2)] text-[var(--foreground)] shadow-[var(--shadow-card)] hover:text-[var(--accent)] active:shadow-[var(--shadow-pressed)]",
   ghost:
@@ -29,7 +29,7 @@ const activeClasses = {
 
 const iconMap = {
   arrowRight: ArrowRight,
-  mail: Mail,
+  mail: EnvelopeSimple,
   phone: Phone,
 };
 
@@ -62,7 +62,7 @@ export default function MechanicalButton({
 
   const content = (
     <>
-      {ResolvedIcon ? <ResolvedIcon className="h-4 w-4 shrink-0" strokeWidth={1.8} /> : null}
+      {ResolvedIcon ? <ResolvedIcon className="h-4 w-4 shrink-0" weight="bold" /> : null}
       <span className="relative z-[1]">{children}</span>
     </>
   );
@@ -71,7 +71,7 @@ export default function MechanicalButton({
     <motion.div
       className={fullWidth ? "w-full" : ""}
       whileHover={{ y: -1 }}
-      transition={{ duration: 0.2, ease: [0.175, 0.885, 0.32, 1.275] }}
+      transition={{ type: "spring", stiffness: 240, damping: 22 }}
     >
       {href ? (
         isExternalHref(href) ? (

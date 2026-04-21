@@ -8,11 +8,11 @@
 import { motion } from "framer-motion";
 
 const directionMap = {
-  up: { x: 0, y: 18 },
-  down: { x: 0, y: -18 },
-  left: { x: 18, y: 0 },
-  right: { x: -18, y: 0 },
-  scale: { x: 0, y: 0, scale: 0.96 },
+  up: { x: 0, y: 12 },
+  down: { x: 0, y: -12 },
+  left: { x: 12, y: 0 },
+  right: { x: -12, y: 0 },
+  scale: { x: 0, y: 0, scale: 0.98 },
 };
 
 // 渲染统一的滑入或缩放出现效果，避免每个页面各写一套动画参数。
@@ -21,7 +21,7 @@ export default function Reveal({
   className = "",
   delay = 0,
   from = "up",
-  duration = 0.55,
+  duration = 0.42,
 }) {
   const hiddenState = directionMap[from] ?? directionMap.up;
 
@@ -31,7 +31,7 @@ export default function Reveal({
       initial={{ opacity: 0, ...hiddenState }}
       whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration, delay, ease: [0.175, 0.885, 0.32, 1.275] }}
+      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>
