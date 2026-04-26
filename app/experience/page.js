@@ -46,8 +46,8 @@ export default function ExperiencePage() {
       <section className="grid gap-6 py-8 lg:grid-cols-[0.92fr_1.08fr]">
         <Reveal>
           <IndustrialPanel className="h-full px-6 py-6 sm:px-8 sm:py-8" variant="dark" screws>
-            <div className="tech-label text-[rgba(224,229,236,0.68)]">Field Playbook</div>
-            <div className="title-font mt-4 text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">
+            <div className="tech-label text-[rgba(224,229,236,0.68)]">交付方法</div>
+            <div className="title-font mt-4 text-3xl font-semibold tracking-normal text-white sm:text-4xl">
               这段经历最核心的价值，是我学会了如何在高压现场把事情做稳。
             </div>
 
@@ -78,8 +78,8 @@ export default function ExperiencePage() {
 
         <Reveal delay={0.08}>
           <IndustrialPanel className="relative px-6 py-6 sm:px-8 sm:py-8" screws vents>
-            <div className="tech-label">Main Timeline</div>
-            <div className="title-font mt-4 text-3xl font-semibold tracking-[-0.04em] text-[var(--foreground)] sm:text-4xl">
+            <div className="tech-label">主经历</div>
+            <div className="title-font mt-4 text-3xl font-semibold tracking-normal text-[var(--foreground)] sm:text-4xl">
               ABB 是我理解复杂系统与真实约束的第一块底盘。
             </div>
 
@@ -112,7 +112,7 @@ export default function ExperiencePage() {
                     </div>
 
                     <div className="mt-6 data-slot rounded-[20px] px-5 py-5">
-                      <div className="tech-label">Scope</div>
+                      <div className="tech-label">职责范围</div>
                       <div className="mt-4 grid gap-3">
                         {item.scope.map((scopeItem) => (
                           <div key={scopeItem} className="text-sm leading-7 text-[var(--muted)] sm:text-base">
@@ -135,7 +135,7 @@ export default function ExperiencePage() {
 
                     {item.projectList ? (
                       <div className="mt-6 data-slot rounded-[20px] px-5 py-5">
-                        <div className="tech-label">Project Records</div>
+                        <div className="tech-label">项目记录</div>
                         <div className="mt-4 grid gap-3">
                           {item.projectList.map((project) => (
                             <div key={project} className="text-sm leading-7 text-[var(--muted)] sm:text-base">
@@ -168,8 +168,8 @@ export default function ExperiencePage() {
       <section className="py-8">
         <Reveal>
           <IndustrialPanel className="px-6 py-6 sm:px-8 sm:py-8" variant="dark" screws>
-            <div className="tech-label text-[rgba(224,229,236,0.68)]">Why It Matters</div>
-            <div className="title-font mt-4 text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">
+            <div className="tech-label text-[rgba(224,229,236,0.68)]">为什么重要</div>
+            <div className="title-font mt-4 text-3xl font-semibold tracking-normal text-white sm:text-4xl">
               {experiencePage.closeout.title}
             </div>
             <p className="mt-5 max-w-[60ch] text-base leading-8 text-[rgba(224,229,236,0.78)]">

@@ -34,7 +34,7 @@ export default function AboutPage() {
           <Reveal>
             <IndustrialPanel className="h-full px-6 py-6 sm:px-8 sm:py-8" screws vents>
               <div className="tech-label">{aboutPage.background.label}</div>
-              <div className="title-font mt-4 text-3xl font-semibold leading-tight tracking-[-0.04em] text-[var(--foreground)] sm:text-4xl">
+              <div className="title-font mt-4 text-3xl font-semibold leading-tight tracking-normal text-[var(--foreground)] sm:text-4xl">
                 {aboutPage.background.title}
               </div>
 
@@ -72,7 +72,7 @@ export default function AboutPage() {
                         <Icon className="h-5 w-5" weight="bold" />
                       </span>
                       <div>
-                        <div className={cn("tech-label", index === 2 ? "text-[rgba(224,229,236,0.7)]" : "")}>Skill Module</div>
+                        <div className={cn("tech-label", index === 2 ? "text-[rgba(224,229,236,0.7)]" : "")}>能力模块</div>
                         <div className={cn("title-font text-xl font-semibold", index === 2 ? "text-white" : "text-[var(--foreground)]")}>
                           {group.title}
                         </div>
@@ -109,7 +109,7 @@ export default function AboutPage() {
               </span>
               <div>
                 <div className="tech-label">{aboutPage.approach.label}</div>
-                <div className="title-font mt-2 text-3xl font-semibold leading-tight tracking-[-0.04em] text-[var(--foreground)] sm:text-4xl">
+                <div className="title-font mt-2 text-3xl font-semibold leading-tight tracking-normal text-[var(--foreground)] sm:text-4xl">
                   {aboutPage.approach.title}
                 </div>
               </div>
@@ -147,8 +147,8 @@ export default function AboutPage() {
                 <GraduationCap className="h-5 w-5" weight="bold" />
               </span>
               <div>
-                <div className="tech-label">Education Rack</div>
-                <div className="title-font mt-2 text-3xl font-semibold tracking-[-0.04em] text-[var(--foreground)] sm:text-4xl">
+                <div className="tech-label">教育背景</div>
+                <div className="title-font mt-2 text-3xl font-semibold tracking-normal text-[var(--foreground)] sm:text-4xl">
                   工程背景让我更重视落地，学术训练让我更重视系统。
                 </div>
               </div>
@@ -187,8 +187,8 @@ export default function AboutPage() {
 
         <Reveal delay={0.08}>
           <IndustrialPanel className="h-full px-6 py-6 sm:px-8 sm:py-8" variant="dark" screws>
-            <div className="tech-label text-[rgba(224,229,236,0.68)]">Role Fit</div>
-            <div className="title-font mt-4 text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">
+            <div className="tech-label text-[rgba(224,229,236,0.68)]">角色适配</div>
+            <div className="title-font mt-4 text-3xl font-semibold tracking-normal text-white sm:text-4xl">
               我比较适合站在复杂项目的中间位置。
             </div>
             <p className="mt-5 max-w-[56ch] text-base leading-8 text-[rgba(224,229,236,0.78)]">
@@ -210,7 +210,7 @@ export default function AboutPage() {
             </div>
 
             <div className="mt-8 rounded-[22px] border border-white/10 bg-white/6 px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
-              <div className="tech-label text-[rgba(224,229,236,0.68)]">Honors</div>
+              <div className="tech-label text-[rgba(224,229,236,0.68)]">荣誉与证书</div>
               <div className="mt-4 grid gap-3">
                 {aboutPage.certifications.map((item) => (
                   <div key={item} className="text-sm leading-7 text-[rgba(224,229,236,0.78)] sm:text-base">

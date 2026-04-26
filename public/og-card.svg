@@ -1,0 +1,49 @@
+<!-- 这个文件定义网站分享预览图，用于社交平台和聊天工具展示。 -->
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f4f6f8" />
+      <stop offset="0.55" stop-color="#e8edf3" />
+      <stop offset="1" stop-color="#dfe6ef" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="10" dy="12" stdDeviation="14" flood-color="#a8b6c9" flood-opacity="0.42" />
+      <feDropShadow dx="-8" dy="-8" stdDeviation="14" flood-color="#ffffff" flood-opacity="0.86" />
+    </filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#4a5568" stroke-width="1" opacity="0.08" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+
+  <rect x="72" y="66" width="1056" height="498" rx="34" fill="#f4f6f8" opacity="0.94" filter="url(#shadow)" />
+  <circle cx="104" cy="98" r="8" fill="#a3b1c6" opacity="0.7" />
+  <circle cx="1096" cy="98" r="8" fill="#ffffff" stroke="#a3b1c6" stroke-width="2" />
+  <circle cx="104" cy="532" r="8" fill="#ffffff" stroke="#a3b1c6" stroke-width="2" />
+  <circle cx="1096" cy="532" r="8" fill="#a3b1c6" opacity="0.7" />
+
+  <text x="132" y="150" fill="#4a5568" font-family="Geist Mono, Consolas, monospace" font-size="22" font-weight="600">
+    RESUME PROFILE / SHENZHEN · SHANGHAI · HONG KONG
+  </text>
+  <text x="132" y="250" fill="#2d3436" font-family="Geist, Segoe UI, sans-serif" font-size="76" font-weight="800">
+    KOU Yu的简历网站
+  </text>
+  <text x="132" y="330" fill="#2d3436" font-family="Geist, Segoe UI, sans-serif" font-size="46" font-weight="700">
+    AI 产品经理 / Agent Builder
+  </text>
+  <text x="132" y="405" fill="#4a5568" font-family="Geist, Segoe UI, sans-serif" font-size="30" font-weight="500">
+    ABB 工业交付经验 · CUHK Robotics 硕士 · Financial Research Agent
+  </text>
+
+  <rect x="132" y="460" width="228" height="54" rx="18" fill="#e94f5f" />
+  <text x="166" y="495" fill="#ffffff" font-family="Geist Mono, Consolas, monospace" font-size="20" font-weight="700">
+    OPEN TO WORK
+  </text>
+
+  <rect x="792" y="164" width="240" height="240" rx="36" fill="#2d3436" />
+  <circle cx="842" cy="214" r="16" fill="#22c55e" />
+  <path d="M852 318 L914 250 L954 318" fill="none" stroke="#e94f5f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M852 358 H970" stroke="#ffffff" stroke-width="18" stroke-linecap="round" opacity="0.88" />
+</svg>

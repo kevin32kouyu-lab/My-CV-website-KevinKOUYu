@@ -18,11 +18,11 @@ export default function Page() {
           <div className="max-w-[68ch]">
             <StatusIndicator state={siteProfile.status.state} label={siteProfile.status.label} />
 
-            <div className="mt-8 tech-label">Resume Profile / Public Version</div>
-            <h1 className="title-font mt-5 text-4xl font-bold leading-[1.02] tracking-[-0.045em] text-[var(--foreground)] sm:text-5xl lg:text-6xl">
+            <div className="mt-8 tech-label">公开简历 / 求职入口</div>
+            <h1 className="title-font mt-5 text-4xl font-bold leading-[1.02] tracking-normal text-[var(--foreground)] sm:text-5xl lg:text-6xl">
               {siteProfile.name}
             </h1>
-            <div className="mt-5 title-font text-xl font-semibold leading-snug tracking-[-0.025em] text-[var(--muted)] sm:text-2xl">
+            <div className="mt-5 title-font text-xl font-semibold leading-snug tracking-normal text-[var(--muted)] sm:text-2xl">
               {siteProfile.roleCn}
             </div>
 
@@ -48,6 +48,14 @@ export default function Page() {
               <MechanicalButton href={`mailto:${contact.email}`} variant="primary" iconName="mail">
                 联系我
               </MechanicalButton>
+              <MechanicalButton
+                href={siteProfile.resume.href}
+                variant="secondary"
+                iconName="download"
+                download={siteProfile.resume.fileName}
+              >
+                {siteProfile.resume.label}
+              </MechanicalButton>
               <MechanicalButton href="/projects" variant="secondary" iconName="arrowRight">
                 查看项目
               </MechanicalButton>
@@ -59,8 +67,8 @@ export default function Page() {
           <IndustrialPanel className="px-5 py-5 sm:px-7 sm:py-7" screws vents>
             <div className="flex items-center justify-between gap-4">
               <div>
-                <div className="tech-label">Basic Profile</div>
-                <div className="title-font mt-2 text-2xl font-semibold tracking-[-0.035em] text-[var(--foreground)] sm:text-3xl">
+                <div className="tech-label">基本资料</div>
+                <div className="title-font mt-2 text-2xl font-semibold tracking-normal text-[var(--foreground)] sm:text-3xl">
                   个人基本资料
                 </div>
               </div>
@@ -72,7 +80,7 @@ export default function Page() {
                 const content = (
                   <>
                     <span className="tech-label shrink-0 text-[0.7rem]">{item.label}</span>
-                    <span className="text-right text-sm font-semibold leading-7 text-[var(--foreground)] sm:text-base">
+                    <span className="min-w-0 text-right text-sm font-semibold leading-7 text-[var(--foreground)] sm:text-base">
                       {item.value}
                     </span>
                   </>
@@ -82,12 +90,12 @@ export default function Page() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="grid grid-cols-[6.5rem_1fr] items-center gap-4 py-4 transition-colors hover:text-[var(--accent)]"
+                    className="grid grid-cols-[5.5rem_minmax(0,1fr)] items-center gap-3 py-3 transition-colors hover:text-[var(--accent)] sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:gap-4 sm:py-4"
                   >
                     {content}
                   </a>
                 ) : (
-                  <div key={item.label} className="grid grid-cols-[6.5rem_1fr] items-center gap-4 py-4">
+                  <div key={item.label} className="grid grid-cols-[5.5rem_minmax(0,1fr)] items-center gap-3 py-3 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:gap-4 sm:py-4">
                     {content}
                   </div>
                 );

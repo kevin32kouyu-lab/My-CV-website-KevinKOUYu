@@ -78,6 +78,14 @@ export default function SiteChrome({ children }) {
               <nav className="flex items-center gap-2">
                 <NavLinks pathname={pathname} />
               </nav>
+              <MechanicalButton
+                href={siteProfile.resume.href}
+                variant="primary"
+                iconName="download"
+                download={siteProfile.resume.fileName}
+              >
+                简历
+              </MechanicalButton>
             </div>
 
             <div className="flex items-center gap-2 lg:hidden">
@@ -110,6 +118,15 @@ export default function SiteChrome({ children }) {
                 <div className="grid gap-3">
                   <NavLinks pathname={pathname} onNavigate={() => setMenuOpen(false)} mobile />
                   <div className="mt-2 grid gap-3 sm:grid-cols-2">
+                    <MechanicalButton
+                      href={siteProfile.resume.href}
+                      variant="primary"
+                      fullWidth
+                      iconName="download"
+                      download={siteProfile.resume.fileName}
+                    >
+                      下载简历
+                    </MechanicalButton>
                     <MechanicalButton href={`mailto:${contact.email}`} variant="connector" fullWidth iconName="mail">
                       邮件联系
                     </MechanicalButton>
@@ -130,7 +147,7 @@ export default function SiteChrome({ children }) {
         <IndustrialPanel className="mx-auto max-w-[var(--page-max)] px-5 py-6 sm:px-6 sm:py-7" screws>
           <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
             <div>
-              <div className="tech-label">Output Ports</div>
+              <div className="tech-label">联系方式</div>
               <div className="mt-3 title-font text-2xl font-semibold text-[var(--foreground)] sm:text-3xl">
                 {siteProfile.footerTitle}
               </div>
@@ -143,6 +160,15 @@ export default function SiteChrome({ children }) {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
+              <MechanicalButton
+                href={siteProfile.resume.href}
+                variant="primary"
+                fullWidth
+                iconName="download"
+                download={siteProfile.resume.fileName}
+              >
+                {siteProfile.resume.label}
+              </MechanicalButton>
               <MechanicalButton href={`mailto:${contact.email}`} variant="connector" fullWidth iconName="mail">
                 {contact.email}
               </MechanicalButton>

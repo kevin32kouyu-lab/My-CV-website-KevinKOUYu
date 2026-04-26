@@ -7,7 +7,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, EnvelopeSimple, Phone } from "@phosphor-icons/react";
+import { ArrowRight, EnvelopeSimple, FileArrowDown, Phone } from "@phosphor-icons/react";
 import { cn } from "../../lib/cn";
 
 const variantClasses = {
@@ -29,13 +29,14 @@ const activeClasses = {
 
 const iconMap = {
   arrowRight: ArrowRight,
+  download: FileArrowDown,
   mail: EnvelopeSimple,
   phone: Phone,
 };
 
-// 判断链接是否需要按外部地址处理，避免站内跳转与联系方式混在一起。
-function isExternalHref(href) {
-  return href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
+// 判断链接是否需要使用原生 a 标签，避免下载文件被路由组件接管。
+function isNativeHref(href) {
+  return href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:") || href.endsWith(".pdf");
 }
 
 // 渲染统一风格的按钮，并根据链接类型自动选择标签。
@@ -74,7 +75,7 @@ export default function MechanicalButton({
       transition={{ type: "spring", stiffness: 240, damping: 22 }}
     >
       {href ? (
-        isExternalHref(href) ? (
+        isNativeHref(href) ? (
           <a href={href} className={classes} {...props}>
             {content}
           </a>

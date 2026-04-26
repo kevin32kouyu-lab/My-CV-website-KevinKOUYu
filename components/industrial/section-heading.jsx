@@ -29,7 +29,7 @@ export default function SectionHeading({
           ) : null}
           <span className="tech-label">{eyebrow}</span>
         </div>
-        <HeadingTag className="title-font mt-6 text-3xl font-bold leading-tight tracking-[-0.04em] text-[var(--foreground)] sm:text-4xl lg:text-5xl">
+        <HeadingTag className="title-font mt-6 text-3xl font-bold leading-tight tracking-normal text-[var(--foreground)] sm:text-4xl lg:text-5xl">
           {title}
         </HeadingTag>
         <p className="mt-5 max-w-[62ch] text-base leading-8 text-[var(--muted)] sm:text-lg">

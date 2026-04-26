@@ -48,7 +48,7 @@ export default function ProjectsPage() {
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                       <div>
                         <div className="tech-label">{project.systemId}</div>
-                        <h2 className="title-font mt-4 text-3xl font-semibold leading-tight tracking-[-0.04em] text-[var(--foreground)] sm:text-4xl">
+                        <h2 className="title-font mt-4 text-3xl font-semibold leading-tight tracking-normal text-[var(--foreground)] sm:text-4xl">
                           {project.title}
                         </h2>
                         <p className="mt-4 max-w-[58ch] text-base leading-8 text-[var(--muted)]">
@@ -58,7 +58,7 @@ export default function ProjectsPage() {
                           {project.period}
                         </div>
                       </div>
-                      <StatusIndicator state="active" label="Project Module" compact />
+                      <StatusIndicator state="active" label="项目案例" compact />
                     </div>
 
                     <div className="mt-8 grid gap-4">
@@ -70,7 +70,7 @@ export default function ProjectsPage() {
                     </div>
 
                     <div className="mt-8">
-                      <div className="tech-label">Tags</div>
+                      <div className="tech-label">关键词</div>
                       <div className="mt-4 flex flex-wrap gap-3">
                         {project.tags.map((tag) => (
                           <span key={tag} className="slot-chip">
@@ -96,17 +96,42 @@ export default function ProjectsPage() {
                   </IndustrialPanel>
 
                   <div className={cn(sideOrder, "grid gap-6")}>
+                    {project.proof ? (
+                      <IndustrialPanel as="section" variant="floating" className="px-6 py-6 sm:px-7 sm:py-7" screws>
+                        <div className="tech-label">{project.proof.label}</div>
+                        <div className="title-font mt-4 text-2xl font-semibold leading-tight tracking-normal text-[var(--foreground)]">
+                          {project.proof.title}
+                        </div>
+
+                        <div className="mt-6 grid gap-3">
+                          {project.proof.items.map((item) => (
+                            <div key={item.label} className="data-slot rounded-[18px] px-4 py-4">
+                              <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+                                <div className="tech-label">{item.label}</div>
+                                <div className="text-sm font-semibold text-[var(--foreground)] sm:text-right">
+                                  {item.value}
+                                </div>
+                              </div>
+                              <div className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                                {item.description}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </IndustrialPanel>
+                    ) : null}
+
                     <IndustrialPanel as="section" variant="recessed" className="px-6 py-6 sm:px-7 sm:py-7">
-                      <div className="tech-label">Role / Impact</div>
+                      <div className="tech-label">角色与影响</div>
                       <div className="mt-6 grid gap-4">
                         <div className="panel-shell rounded-[20px] px-5 py-5">
-                          <div className="tech-label">Role</div>
+                          <div className="tech-label">角色</div>
                           <div className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">
                             {project.role}
                           </div>
                         </div>
                         <div className="panel-shell rounded-[20px] px-5 py-5">
-                          <div className="tech-label">Impact</div>
+                          <div className="tech-label">影响</div>
                           <div className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">
                             {project.impact}
                           </div>
@@ -116,7 +141,7 @@ export default function ProjectsPage() {
 
                     <IndustrialPanel as="section" variant="dark" className="blueprint-grid px-6 py-6 sm:px-7 sm:py-7">
                       <div className="flex items-center justify-between gap-3">
-                        <div className="tech-label text-[rgba(224,229,236,0.68)]">Architecture</div>
+                        <div className="tech-label text-[rgba(224,229,236,0.68)]">系统结构</div>
                         <Wrench className="h-4 w-4 text-[var(--accent)]" weight="bold" />
                       </div>
 
@@ -143,8 +168,8 @@ export default function ProjectsPage() {
       <section className="py-8">
         <Reveal>
           <IndustrialPanel className="px-6 py-6 sm:px-8 sm:py-8" variant="dark" screws>
-            <div className="tech-label text-[rgba(224,229,236,0.68)]">Support Layer</div>
-            <div className="mt-4 title-font text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">
+            <div className="tech-label text-[rgba(224,229,236,0.68)]">能力支撑</div>
+            <div className="mt-4 title-font text-3xl font-semibold tracking-normal text-white sm:text-4xl">
               比起单点功能，我更喜欢能牵动整条链路的问题。
             </div>
             <p className="mt-5 max-w-[62ch] text-base leading-8 text-[rgba(224,229,236,0.78)]">
