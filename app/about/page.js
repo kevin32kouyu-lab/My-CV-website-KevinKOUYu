@@ -58,22 +58,23 @@ export default function AboutPage() {
           <StaggerGroup className="grid gap-4 sm:grid-cols-2">
             {aboutPage.skillGroups.map((group, index) => {
               const Icon = group.icon;
+              const isDark = group.title.includes("机器人");
 
               return (
                 <StaggerItem key={group.title} className={index === 0 ? "sm:col-span-2" : ""}>
                   <IndustrialPanel
                     className="h-full px-5 py-5 sm:px-6 sm:py-6"
-                    variant={index === 2 ? "dark" : "floating"}
+                    variant={isDark ? "dark" : "floating"}
                     interactive
                     screws={index === 0}
                   >
                     <div className="flex items-center gap-3">
-                      <span className={cn("icon-housing h-12 w-12", index === 2 ? "bg-white/8 text-white shadow-none" : "text-[var(--accent)]")}>
+                      <span className={cn("icon-housing h-12 w-12", isDark ? "bg-white/8 text-white shadow-none" : "text-[var(--accent)]")}>
                         <Icon className="h-5 w-5" weight="bold" />
                       </span>
                       <div>
-                        <div className={cn("tech-label", index === 2 ? "text-[rgba(224,229,236,0.7)]" : "")}>能力模块</div>
-                        <div className={cn("title-font text-xl font-semibold", index === 2 ? "text-white" : "text-[var(--foreground)]")}>
+                        <div className={cn("tech-label", isDark ? "text-[rgba(224,229,236,0.7)]" : "")}>能力模块</div>
+                        <div className={cn("title-font text-xl font-semibold", isDark ? "text-white" : "text-[var(--foreground)]")}>
                           {group.title}
                         </div>
                       </div>
@@ -85,7 +86,7 @@ export default function AboutPage() {
                           key={item}
                           className={cn(
                             "slot-chip",
-                            index === 2 ? "bg-white/8 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]" : "",
+                            isDark ? "bg-white/8 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]" : "",
                           )}
                         >
                           {item}
